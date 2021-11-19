@@ -28,7 +28,7 @@ const Main = () => {
   }, [])
   return (
     <div className="list--wrapper">
-      <h3>내 일주일은?</h3>
+      <h3>강태수의 일주일은?</h3>
       {todayWeek.map((el, i) => {
         return (
           <div key={i} className="star--wrapper">
