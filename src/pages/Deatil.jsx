@@ -12,7 +12,7 @@ const Detail = () => {
         setSelect(e.key)
       }
     })
-  })
+  }, [])
   return (
     <div className="detail--wrapper">
       <h3 className="detail--title">
