@@ -18,12 +18,8 @@ const Main = () => {
     ]
     let date = new Date()
     let temp = []
-    for (let i = 0; i < week.length; i++) {
-      if (i === date.getDay()) {
-        temp.push(...week.slice(i, week.length))
-        temp.push(...week.slice(0, i))
-      }
-    }
+    temp.push(...week.slice(date.getDay(), week.length))
+    temp.push(...week.slice(0, date.getDay()))
     setTodayWeek(temp)
   }, [])
   return (
