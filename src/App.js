@@ -1,14 +1,19 @@
+import React from 'react'
+import { Suspense } from 'react'
 import { Route, Routes } from 'react-router'
-import Detail from './pages/Deatil'
-import Main from './pages/Main'
+
+const Detail = React.lazy(() => import('./pages/Deatil'))
+const Main = React.lazy(() => import('./pages/Main'))
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/detail/:id" element={<Detail />} />
-      </Routes>
+      <Suspense fallback={<div>loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      </Suspense>
     </div>
   )
 }

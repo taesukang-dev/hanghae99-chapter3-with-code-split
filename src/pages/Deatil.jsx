@@ -1,15 +1,23 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import '../styles/detail.scss'
 
 const Detail = () => {
   let [select, setSelect] = useState(0)
-  let navigate = useNavigate()
   let { id } = useParams()
+
+  // url 제어
+  const navigate = (url) => {
+    import('../hooks/useNavigateToDetail').then((result) => result.default(url))
+  }
+
   useEffect(() => {
     window.addEventListener('keydown', (e) => {
-      if (Number(e.key) >= 0 && 6 > Number(e.key)) {
-        setSelect(e.key)
+      // type check
+      if (Number(e.key) === parseInt(e.key)) {
+        import('../actions/keydownAction').then((res) =>
+          setSelect(res.default(e.key))
+        )
       }
     })
   }, [])
